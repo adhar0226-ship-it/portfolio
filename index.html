@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#081A27" />
+<meta name="description" content="Abhigyan Dhar — Perfectionist, Web Developer & AI Integrator. Crafting premium digital experiences through code and vision." />
+<meta name="keywords" content="Abhigyan Dhar, perfectionist, web developer, AI integrator, portfolio, glassmorphism, HTML, CSS, JavaScript, Python" />
+<meta name="author" content="Abhigyan Dhar" />
+<meta property="og:title" content="Abhigyan Dhar — Perfectionist in Code & Vision" />
+<meta property="og:description" content="Crafting perfection through code, AI integration, and futuristic web experiences." />
+<meta property="og:type" content="website" />
+
+<title>Abhigyan Dhar — Perfectionist in Code & Vision</title>
+
+<!-- Favicon placeholder -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238DB6B0'/%3E%3Cstop offset='1' stop-color='%235D8383'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%23081A27'/%3E%3Ctext x='50' y='66' font-family='Outfit,sans-serif' font-size='52' font-weight='700' text-anchor='middle' fill='url(%23g)'%3EK%3C/text%3E%3C/svg%3E" />
+
+<!-- Fonts & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+<style>
+/* =========================================================
+   1. CSS VARIABLES & RESET
+   ========================================================= */
+:root{
+  /* Brand palette */
+  --navy:#081A27;
+  --dark-teal:#042A36;
+  --muted-teal:#5D8383;
+  --sage:#8DB6B0;
+  --silver:#C8CDCF;
+
+  /* Functional tokens */
+  --bg-0:#081A27;
+  --bg-1:#042A36;
+  --text:#C8CDCF;
+  --text-dim:#8DB6B0;
+  --text-muted:#5D8383;
+
+  /* Glass */
+  --glass-bg: linear-gradient(135deg, rgba(141,182,176,.08), rgba(93,131,131,.04));
+  --glass-border: 1px solid rgba(141,182,176,.18);
+  --glass-shadow:
+    0 8px 32px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(200,205,207,.08),
+    inset 0 -1px 0 rgba(8,26,39,.4);
+  --glass-blur: blur(22px) saturate(160%);
+
+  /* Accents */
+  --grad-accent: linear-gradient(135deg, var(--sage), var(--muted-teal));
+  --grad-text: linear-gradient(135deg, var(--silver) 0%, var(--sage) 50%, var(--muted-teal) 100%);
+
+  /* Motion */
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+
+  /* Layout */
+  --maxw: 1280px;
+  --r-lg: 24px;
+  --r-md: 18px;
+  --r-sm: 12px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  font-family:'Outfit', system-ui, sans-serif;
+  background: var(--bg-0);
+  color: var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  min-height:100vh;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+  cursor:none; /* custom cursor */
+}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+button{font-family:inherit; cursor:none; border:none; background:none; color:inherit}
+input,textarea,select{font-family:inherit}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  html{scroll-behavior:auto}
+}
+
+/* =========================================================
+   2. BACKGROUND LAYER — animated gradient + blobs + particles
+   ========================================================= */
+.bg-layer{
+  position:fixed; inset:0; z-index:-3;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(93,131,131,.22), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(141,182,176,.18), transparent 55%),
+    linear-gradient(180deg, #081A27 0%, #042A36 100%);
+}
+.bg-blob{
+  position:fixed; border-radius:50%; filter:blur(80px); opacity:.45;
+  z-index:-2; pointer-events:none; will-change:transform;
+}
+.bg-blob.b1{ width:520px; height:520px; background:radial-gradient(circle, var(--muted-teal), transparent 70%); top:-120px; left:-120px; animation:floatBlob 22s ease-in-out infinite}
+.bg-blob.b2{ width:460px; height:460px; background:radial-gradient(circle, var(--sage), transparent 70%); bottom:-140px; right:-120px; animation:floatBlob 28s ease-in-out infinite reverse}
+.bg-blob.b3{ width:380px; height:380px; background:radial-gradient(circle, var(--muted-teal), transparent 70%); top:40%; left:60%; animation:floatBlob 32s ease-in-out infinite}
+@keyframes floatBlob{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(80px,-60px) scale(1.1)}
+  66%{transform:translate(-60px,80px) scale(.95)}
+}
+
+#particles{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+}
+
+.bg-grain{
+  position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   3. CUSTOM CURSOR + MOUSE GLOW
+   ========================================================= */
+.cursor-dot,.cursor-ring{
+  position:fixed; top:0; left:0; pointer-events:none; z-index:9999;
+  transform:translate(-50%,-50%);
+  will-change:transform;
+}
+.cursor-dot{
+  width:6px; height:6px; border-radius:50%;
+  background: var(--sage);
+  box-shadow:0 0 12px var(--sage);
+  transition:width .25s var(--ease), height .25s var(--ease), background .25s;
+}
+.cursor-ring{
+  width:36px; height:36px; border-radius:50%;
+  border:1.5px solid rgba(141,182,176,.55);
+  transition:width .25s var(--ease), height .25s var(--ease), border-color .25s;
+}
+.cursor-ring.hover{ width:60px; height:60px; border-color:var(--sage)}
+.cursor-dot.hover{ width:0; height:0}
+@media (hover:none),(pointer:coarse){
+  body{cursor:auto}
+  button,a,input,textarea{cursor:auto}
+  .cursor-dot,.cursor-ring{display:none}
+}
+
+.mouse-glow{
+  position:fixed; top:0; left:0; width:520px; height:520px;
+  border-radius:50%; pointer-events:none; z-index:-1;
+  background:radial-gradient(circle, rgba(141,182,176,.16), transparent 65%);
+  transform:translate(-50%,-50%);
+  filter:blur(40px);
+  transition:opacity .4s;
+}
+@media (hover:none),(pointer:coarse){.mouse-glow{display:none}}
+
+/* =========================================================
+   4. LOADING SCREEN
+   ========================================================= */
+#loader{
+  position:fixed; inset:0; z-index:10000;
+  background:linear-gradient(135deg, #081A27, #042A36);
+  display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:28px;
+  transition:opacity .6s var(--ease), visibility .6s;
+}
+#loader.hidden{opacity:0; visibility:hidden}
+.loader-logo{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:clamp(48px, 8vw, 80px);
+  font-weight:700;
+  background: var(--grad-text);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  letter-spacing:-2px;
+}
+.loader-bar{
+  width:240px; height:2px; background:rgba(141,182,176,.15); border-radius:2px; overflow:hidden;
+}
+.loader-bar::after{
+  content:''; display:block; width:40%; height:100%;
+  background:linear-gradient(90deg, transparent, var(--sage), transparent);
+  animation:loadSlide 1.4s var(--ease) infinite;
+}
+@keyframes loadSlide{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(350%)}
+}
+.loader-text{ font-size:13px; letter-spacing:4px; color:var(--text-dim); text-transform:uppercase}
+
+/* =========================================================
+   5. GLOBAL GLASS PRIMITIVES
+   ========================================================= */
+.glass{
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--r-lg);
+  position:relative;
+  overflow:hidden;
+}
+.glass::before{
+  content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+  background:linear-gradient(135deg, rgba(200,205,207,.25), rgba(141,182,176,.05) 40%, transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  pointer-events:none;
+}
+
+.section{
+  padding: 110px 24px;
+  position:relative;
+}
+.container{ max-width: var(--maxw); margin:0 auto; width:100%}
+.section-head{ text-align:center; margin-bottom:60px}
+.eyebrow{
+  display:inline-block; padding:6px 14px; border-radius:99px;
+  background:rgba(141,182,176,.08); border:1px solid rgba(141,182,176,.2);
+  color:var(--sage); font-size:12px; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:18px;
+}
+.section-title{
+  font-family:'Space Grotesk', sans-serif;
+  font-size:clamp(32px, 5vw, 52px);
+  font-weight:700; line-height:1.1; letter-spacing:-1.5px;
+  background: var(--grad-text);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  margin-bottom:14px;
+}
+.section-sub{ color:var(--text-dim); max-width:640px; margin:0 auto; font-size:17px}
+
+/* =========================================================
+   6. TYPOGRAPHY HELPERS
+   ========================================================= */
+.gradient-text{
+  background: var(--grad-text);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.heading-xl{
+  font-family:'Space Grotesk', sans-serif;
+  font-weight:700; letter-spacing:-2px;
+  font-size:clamp(40px, 7vw, 84px);
+  line-height:1.02;
+}
+
+/* =========================================================
+   7. BUTTONS
+   ========================================================= */
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 26px; border-radius:99px; font-weight:500; font-size:15px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s;
+  position:relative; overflow:hidden; isolation:isolate;
+  white-space:nowrap;
+}
+.btn-primary{
+  background: var(--grad-accent);
+  color:#081A27; font-weight:600;
+  box-shadow: 0 8px 24px rgba(93,131,131,.35), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.btn-primary:hover{ transform:translateY(-3px); box-shadow: 0 14px 36px rgba(141,182,176,.45), inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-ghost{
+  background:rgba(141,182,176,.06); color:var(--text);
+  border:1px solid rgba(141,182,176,.25); backdrop-filter:blur(10px);
+}
+.btn-ghost:hover{ background:rgba(141,182,176,.14); border-color:var(--sage); transform:translateY(-3px)}
+.btn-sm{ padding:10px 18px; font-size:13px}
+.btn .ripple{
+  position:absolute; border-radius:50%; transform:scale(0);
+  background:rgba(255,255,255,.5); pointer-events:none;
+  animation:ripple .7s var(--ease-out);
+}
+@keyframes ripple{ to{ transform:scale(4); opacity:0}}
+
+/* Magnetic button helper (applied via JS) */
+.magnetic{ transition:transform .35s var(--ease)}
+
+/* =========================================================
+   8. NAVIGATION
+   ========================================================= */
+.nav{
+  position:fixed; top:18px; left:50%; transform:translateX(-50%);
+  width:calc(100% - 32px); max-width:1200px;
+  padding:14px 24px; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  background:rgba(8,26,39,.45);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(141,182,176,.15);
+  border-radius:99px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  transition:transform .5s var(--ease), opacity .5s var(--ease), background .35s;
+}
+.nav.hidden{ transform:translate(-50%, -150%)}
+.nav.scrolled{ background:rgba(8,26,39,.7)}
+
+.brand{
+  font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:20px;
+  display:flex; align-items:center; gap:10px;
+}
+.brand-mark{
+  width:32px; height:32px; border-radius:10px;
+  background: var(--grad-accent);
+  display:grid; place-items:center;
+  color:#081A27; font-weight:800; font-family:'Space Grotesk';
+  box-shadow:0 4px 14px rgba(93,131,131,.4);
+}
+
+.nav-links{
+  display:flex; gap:6px; list-style:none;
+}
+.nav-links a{
+  position:relative; padding:8px 14px; font-size:14px; font-weight:500;
+  color:var(--text-dim); border-radius:99px; transition:color .3s;
+}
+.nav-links a:hover{ color:var(--text)}
+.nav-links a.active{ color:var(--sage)}
+.nav-links a::after{
+  content:''; position:absolute; left:50%; bottom:2px;
+  width:0; height:2px; border-radius:2px;
+  background: var(--grad-accent);
+  transition:width .35s var(--ease), left .35s var(--ease);
+}
+.nav-links a.active::after, .nav-links a:hover::after{ width:60%; left:20%}
+
+.nav-cta{ display:flex; gap:8px; align-items:center}
+
+.hamburger{
+  display:none; width:40px; height:40px; border-radius:50%;
+  background:rgba(141,182,176,.08); border:1px solid rgba(141,182,176,.2);
+  align-items:center; justify-content:center;
+}
+.hamburger span{
+  display:block; width:18px; height:2px; background:var(--text); border-radius:2px;
+  transition:transform .35s var(--ease), opacity .25s;
+  position:relative;
+}
+.hamburger span::before, .hamburger span::after{
+  content:''; position:absolute; left:0; width:18px; height:2px;
+  background:var(--text); border-radius:2px; transition:transform .35s var(--ease), top .35s var(--ease);
+}
+.hamburger span::before{ top:-6px}
+.hamburger span::after{ top:6px}
+.hamburger.open span{ background:transparent}
+.hamburger.open span::before{ top:0; transform:rotate(45deg)}
+.hamburger.open span::after{ top:0; transform:rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed; top:0; right:0; height:100vh; width:min(360px, 86vw);
+  background:rgba(4,42,54,.92);
+  backdrop-filter:blur(28px) saturate(160%);
+  -webkit-backdrop-filter:blur(28px) saturate(160%);
+  border-left:1px solid rgba(141,182,176,.2);
+  z-index:99; padding:100px 32px 32px;
+  transform:translateX(105%); transition:transform .5s var(--ease);
+  display:flex; flex-direction:column; gap:8px;
+}
+.mobile-menu.open{ transform:translateX(0)}
+.mobile-menu a{
+  font-size:22px; font-weight:500; padding:14px 0;
+  border-bottom:1px solid rgba(141,182,176,.1);
+  display:flex; align-items:center; gap:14px;
+  transition:padding-left .3s var(--ease), color .3s;
+}
+.mobile-menu a i{ color:var(--sage); width:20px}
+.mobile-menu a:hover{ padding-left:12px; color:var(--sage)}
+.mobile-menu .mobile-socials{ margin-top:auto; display:flex; gap:14px; padding-top:24px}
+.mobile-menu .mobile-socials a{ border:none; padding:10px; font-size:18px}
+
+@media (max-width: 960px){
+  .nav-links, .nav-cta .btn{display:none}
+  .hamburger{display:flex}
+}
+
+/* =========================================================
+   9. HERO
+   ========================================================= */
+.hero{
+  min-height:100vh; padding:140px 24px 80px;
+  display:flex; align-items:center; position:relative;
+}
+.hero-grid{
+  display:grid; grid-template-columns: 1.1fr 1fr;
+  gap:60px; align-items:center; max-width: var(--maxw); margin:0 auto; width:100%;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 16px; border-radius:99px;
+  background:rgba(141,182,176,.08); border:1px solid rgba(141,182,176,.2);
+  color:var(--sage); font-size:13px; letter-spacing:2px; text-transform:uppercase;
+  margin-bottom:22px;
+}
+.hero-eyebrow .dot{ width:8px; height:8px; border-radius:50%; background:var(--sage); box-shadow:0 0 12px var(--sage); animation:pulse 2s infinite}
+@keyframes pulse{ 0%,100%{opacity:1; transform:scale(1)} 50%{opacity:.5; transform:scale(1.3)}}
+
+.hero h1{ margin-bottom:18px}
+.hero h1 .first{ display:block; font-weight:300; font-size:clamp(18px, 2vw, 22px); color:var(--text-dim); letter-spacing:6px; text-transform:uppercase; margin-bottom:6px}
+.hero h1 .name{
+  display:block; font-family:'Space Grotesk', sans-serif;
+  font-weight:700; letter-spacing:-3px;
+  font-size:clamp(48px, 8vw, 96px); line-height:1;
+  background:linear-gradient(135deg, var(--silver), var(--sage) 60%, var(--muted-teal));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero h1 .name .char{ display:inline-block; opacity:0; transform:translateY(40px); animation:charIn .8s var(--ease-out) forwards}
+
+@keyframes charIn{ to{ opacity:1; transform:translateY(0)}}
+
+.hero-typing{
+  font-family:'Space Grotesk', sans-serif; font-size:clamp(22px, 3vw, 32px);
+  color:var(--sage); margin-bottom:22px; font-weight:500;
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+}
+.hero-typing .label{ color:var(--text-muted)}
+.hero-typing .dynamic{ color:var(--silver); position:relative; min-height:1.2em}
+.hero-typing .dynamic::after{
+  content:''; display:inline-block; width:3px; height:0.95em; background:var(--sage);
+  margin-left:4px; vertical-align:middle; animation:blink 1s steps(2) infinite;
+  box-shadow:0 0 8px var(--sage);
+}
+@keyframes blink{ 50%{opacity:0}}
+
+.hero-tagline{ font-size:17px; color:var(--text-dim); max-width:540px; margin-bottom:32px; line-height:1.7}
+
+.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px}
+
+.hero-socials{ display:flex; gap:10px; flex-wrap:wrap}
+.social-icon{
+  width:44px; height:44px; border-radius:50%;
+  display:grid; place-items:center;
+  background:rgba(141,182,176,.06); border:1px solid rgba(141,182,176,.18);
+  color:var(--text-dim); font-size:16px;
+  transition:transform .35s var(--ease), background .35s, color .35s, border-color .35s;
+  position:relative; overflow:hidden;
+}
+.social-icon:hover{
+  transform:translateY(-4px) rotate(-6deg);
+  background: var(--grad-accent); color:#081A27;
+  border-color:transparent;
+  box-shadow:0 10px 24px rgba(93,131,131,.4);
+}
+
+/* Hero portrait */
+.hero-portrait-wrap{
+  position:relative; display:flex; justify-content:center; align-items:center;
+  perspective:1000px;
+}
+.hero-portrait{
+  width:min(420px, 80vw); aspect-ratio:1/1; border-radius:32px;
+  position:relative; overflow:hidden;
+  background:linear-gradient(135deg, rgba(141,182,176,.1), rgba(93,131,131,.05));
+  border:1px solid rgba(141,182,176,.25);
+  backdrop-filter:blur(20px);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(200,205,207,.15);
+  transition:transform .8s var(--ease);
+}
+.hero-portrait::before{
+  content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1px;
+  background:linear-gradient(135deg, rgba(200,205,207,.4), transparent 40%, rgba(141,182,176,.2) 80%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  pointer-events:none;
+}
+.hero-portrait img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 12s var(--ease);
+}
+.hero-portrait:hover img{ transform:scale(1.08)}
+
+.hero-portrait-ring{
+  position:absolute; inset:-30px; border-radius:48px;
+  border:1px dashed rgba(141,182,176,.25);
+  animation:spin 40s linear infinite;
+}
+.hero-portrait-ring.r2{ inset:-60px; animation:spin 60s linear infinite reverse; opacity:.5}
+@keyframes spin{ to{ transform:rotate(360deg)}}
+
+.hero-floating-icon{
+  position:absolute; width:54px; height:54px; border-radius:16px;
+  display:grid; place-items:center; font-size:22px;
+  background:rgba(8,26,39,.6); backdrop-filter:blur(14px);
+  border:1px solid rgba(141,182,176,.25);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  animation:floatY 6s ease-in-out infinite;
+}
+.hero-floating-icon.f1{ top:6%; left:-8%; color:#E34F26; animation-delay:0s}
+.hero-floating-icon.f2{ top:14%; right:-10%; color:#F7DF1E; animation-delay:-1s}
+.hero-floating-icon.f3{ bottom:18%; left:-12%; color:#3776AB; animation-delay:-2s}
+.hero-floating-icon.f4{ bottom:8%; right:-6%; color:#8DB6B0; animation-delay:-3s}
+.hero-floating-icon.f5{ top:50%; right:-16%; color:#5D8383; animation-delay:-4s}
+@keyframes floatY{ 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-14px)}}
+
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns:1fr; gap:40px; text-align:center}
+  .hero-eyebrow, .hero-typing, .hero-ctas, .hero-socials{ justify-content:center}
+  .hero-portrait{ width:min(320px, 70vw)}
+}
+
+/* =========================================================
+   10. ABOUT
+   ========================================================= */
+.about-grid{ display:grid; grid-template-columns:1fr 1.4fr; gap:40px; align-items:stretch}
+.about-card{ padding:40px}
+.about-image-wrap{
+  position:relative; border-radius:var(--r-md); overflow:hidden;
+  height:100%; min-height:380px;
+}
+.about-image-wrap img{ width:100%; height:100%; object-fit:cover}
+.about-image-wrap::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(8,26,39,.6));
+}
+.about-quote{
+  position:absolute; bottom:20px; left:20px; right:20px;
+  font-family:'Space Grotesk', sans-serif; font-style:italic;
+  color:var(--silver); font-size:14px; line-height:1.5;
+  padding:16px 18px;
+  background:rgba(8,26,39,.7); backdrop-filter:blur(12px);
+  border-radius:12px; border:1px solid rgba(141,182,176,.2);
+}
+
+.about-content h3{
+  font-family:'Space Grotesk'; font-size:28px; margin-bottom:18px;
+  background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.about-content p{ color:var(--text-dim); margin-bottom:16px; font-size:16px}
+.about-meta{
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-top:24px;
+}
+.meta-item{
+  padding:14px 16px; border-radius:14px;
+  background:rgba(141,182,176,.05); border:1px solid rgba(141,182,176,.12);
+}
+.meta-item .lbl{ font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase}
+.meta-item .val{ font-weight:500; color:var(--text); margin-top:4px; font-size:14px}
+
+@media (max-width: 900px){
+  .about-grid{ grid-template-columns:1fr}
+  .about-image-wrap{ min-height:300px}
+  .about-meta{ grid-template-columns:1fr}
+}
+
+/* =========================================================
+   11. SKILLS
+   ========================================================= */
+.skills-tabs{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;
+}
+.skill-tab{
+  padding:10px 20px; border-radius:99px;
+  background:rgba(141,182,176,.05); border:1px solid rgba(141,182,176,.15);
+  color:var(--text-dim); font-size:14px; font-weight:500;
+  transition:all .35s var(--ease);
+}
+.skill-tab.active, .skill-tab:hover{
+  background:var(--grad-accent); color:#081A27; border-color:transparent;
+  box-shadow:0 6px 18px rgba(93,131,131,.35);
+}
+
+.skills-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;
+}
+.skill-card{
+  padding:28px; text-align:center;
+  transition:transform .5s var(--ease), box-shadow .5s;
+}
+.skill-card:hover{ transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.skill-circle{
+  position:relative; width:130px; height:130px; margin:0 auto 18px;
+}
+.skill-circle svg{ transform:rotate(-90deg); width:100%; height:100%}
+.skill-circle .track{ stroke:rgba(141,182,176,.12); fill:none; stroke-width:8}
+.skill-circle .fill{
+  stroke:url(#skillGrad); fill:none; stroke-width:8;
+  stroke-linecap:round; stroke-dasharray:376.99;
+  transition:stroke-dashoffset 1.6s var(--ease-out);
+}
+.skill-circle .pct{
+  position:absolute; inset:0; display:grid; place-items:center;
+  font-family:'Space Grotesk'; font-size:26px; font-weight:600; color:var(--silver);
+}
+.skill-name{ font-weight:600; font-size:16px; margin-bottom:4px; color:var(--text)}
+.skill-desc{ font-size:13px; color:var(--text-muted)}
+
+.soft-skills{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:14px; margin-top:40px;
+}
+.soft-skill{
+  padding:18px; border-radius:16px;
+  background:rgba(141,182,176,.05); border:1px solid rgba(141,182,176,.15);
+  display:flex; align-items:center; gap:12px;
+  transition:transform .35s var(--ease), background .35s, border-color .35s;
+}
+.soft-skill:hover{ transform:translateY(-4px); background:rgba(141,182,176,.1); border-color:var(--sage)}
+.soft-skill i{ color:var(--sage); font-size:20px; width:24px; text-align:center}
+.soft-skill span{ font-weight:500; font-size:14px}
+
+/* =========================================================
+   12. TIMELINE
+   ========================================================= */
+.timeline-wrap{ position:relative; max-width:900px; margin:0 auto; padding:20px 0}
+.timeline-wrap::before{
+  content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg, transparent, var(--sage), var(--muted-teal), transparent);
+  transform:translateX(-50%); border-radius:2px;
+}
+.timeline-item{
+  position:relative; width:50%; padding:24px 40px;
+  opacity:0; transform:translateY(40px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.timeline-item.visible{ opacity:1; transform:translateY(0)}
+.timeline-item:nth-child(odd){ left:0; text-align:right; padding-right:60px}
+.timeline-item:nth-child(even){ left:50%; padding-left:60px}
+.timeline-item .dot{
+  position:absolute; top:34px; width:18px; height:18px;
+  border-radius:50%; background:var(--sage);
+  box-shadow:0 0 0 4px rgba(141,182,176,.15), 0 0 18px var(--sage);
+  z-index:2;
+}
+.timeline-item:nth-child(odd) .dot{ right:-9px}
+.timeline-item:nth-child(even) .dot{ left:-9px}
+.timeline-card{
+  padding:24px; transition:transform .4s var(--ease);
+}
+.timeline-card:hover{ transform:translateY(-4px)}
+.timeline-date{
+  display:inline-block; font-size:12px; letter-spacing:2px;
+  padding:4px 12px; border-radius:99px;
+  background:rgba(141,182,176,.1); color:var(--sage); margin-bottom:10px;
+  text-transform:uppercase; font-weight:500;
+}
+.timeline-card h4{ font-family:'Space Grotesk'; font-size:19px; margin-bottom:6px; color:var(--silver)}
+.timeline-card .role{ color:var(--sage); font-size:14px; margin-bottom:10px; font-weight:500}
+.timeline-card p{ font-size:14px; color:var(--text-dim); line-height:1.6}
+
+@media (max-width:768px){
+  .timeline-wrap::before{ left:20px}
+  .timeline-item{ width:100%; padding:16px 16px 16px 56px; text-align:left !important; left:0 !important}
+  .timeline-item .dot{ left:11px !important; right:auto !important}
+}
+
+/* =========================================================
+   13. SERVICES
+   ========================================================= */
+.services-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px}
+.service-card{
+  padding:36px 28px; transition:transform .5s var(--ease);
+  position:relative;
+}
+.service-card:hover{ transform:translateY(-8px)}
+.service-icon{
+  width:64px; height:64px; border-radius:18px;
+  display:grid; place-items:center; font-size:26px;
+  background:linear-gradient(135deg, rgba(141,182,176,.15), rgba(93,131,131,.1));
+  color:var(--sage); margin-bottom:20px;
+  border:1px solid rgba(141,182,176,.25);
+  transition:transform .5s var(--ease);
+}
+.service-card:hover .service-icon{ transform:rotate(-8deg) scale(1.05)}
+.service-card h4{ font-family:'Space Grotesk'; font-size:22px; margin-bottom:10px; color:var(--silver)}
+.service-card p{ color:var(--text-dim); font-size:14.5px; line-height:1.7}
+.service-card .more{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:16px; color:var(--sage); font-size:13px; font-weight:500;
+}
+
+/* =========================================================
+   14. PROJECTS
+   ========================================================= */
+.projects-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:28px}
+.project-card{
+  border-radius:var(--r-lg); overflow:hidden;
+  background:rgba(8,26,39,.4);
+  border:1px solid rgba(141,182,176,.15);
+  transition:transform .5s var(--ease), box-shadow .5s, border-color .5s;
+  position:relative; will-change:transform;
+  backdrop-filter:blur(14px);
+}
+.project-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 70px rgba(0,0,0,.5);
+  border-color:rgba(141,182,176,.4);
+}
+.project-thumb{
+  position:relative; aspect-ratio:16/10; overflow:hidden;
+  background:linear-gradient(135deg, rgba(141,182,176,.1), rgba(93,131,131,.05));
+}
+.project-thumb img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .8s var(--ease), filter .8s;
+}
+.project-card:hover .project-thumb img{ transform:scale(1.08); filter:brightness(.7)}
+.project-overlay{
+  position:absolute; inset:0;
+  display:flex; align-items:flex-end; padding:20px;
+  background:linear-gradient(0deg, rgba(8,26,39,.95) 0%, rgba(8,26,39,.4) 50%, transparent 100%);
+  opacity:0; transition:opacity .4s;
+}
+.project-card:hover .project-overlay{ opacity:1}
+.project-tech{
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.project-tech span{
+  padding:4px 10px; font-size:11px; font-weight:500;
+  border-radius:99px;
+  background:rgba(141,182,176,.15); color:var(--sage);
+  border:1px solid rgba(141,182,176,.25);
+  backdrop-filter:blur(6px);
+}
+.project-body{ padding:24px}
+.project-body h4{ font-family:'Space Grotesk'; font-size:21px; margin-bottom:8px; color:var(--silver)}
+.project-body p{ font-size:14px; color:var(--text-dim); line-height:1.6; margin-bottom:16px}
+.project-actions{ display:flex; gap:10px; flex-wrap:wrap}
+.project-actions .btn{ flex:1; justify-content:center; min-width:0}
+.project-actions .btn i{ font-size:13px}
+
+/* =========================================================
+   15. GALLERY
+   ========================================================= */
+.gallery-grid{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;
+}
+.gallery-item{
+  position:relative; aspect-ratio:1/1; border-radius:18px; overflow:hidden;
+  background:rgba(141,182,176,.05); border:1px solid rgba(141,182,176,.15);
+  cursor:none; transition:transform .5s var(--ease), border-color .5s;
+}
+.gallery-item:hover{ transform:scale(1.02); border-color:var(--sage)}
+.gallery-item:nth-child(1){ grid-column:span 2; grid-row:span 2; aspect-ratio:auto}
+.gallery-item img{ width:100%; height:100%; object-fit:cover; transition:transform 1s var(--ease)}
+.gallery-item:hover img{ transform:scale(1.1)}
+.gallery-item .cap{
+  position:absolute; inset:auto 0 0 0; padding:16px;
+  background:linear-gradient(0deg, rgba(8,26,39,.9), transparent);
+  color:var(--silver); font-size:14px; font-weight:500;
+  transform:translateY(100%); transition:transform .4s var(--ease);
+}
+.gallery-item:hover .cap{ transform:translateY(0)}
+@media (max-width:768px){
+  .gallery-grid{ grid-template-columns:repeat(2, 1fr)}
+  .gallery-item:nth-child(1){ grid-column:span 2; grid-row:span 2}
+}
+
+/* =========================================================
+   16. TESTIMONIALS
+   ========================================================= */
+.testi-track-wrap{ position:relative; overflow:hidden; padding:10px 0 30px}
+.testi-track{
+  display:flex; gap:24px;
+  transition:transform .7s var(--ease);
+}
+.testi-card{
+  flex:0 0 calc((100% - 48px) / 3); padding:32px;
+  position:relative;
+}
+@media (max-width:900px){ .testi-card{ flex:0 0 calc((100% - 24px) / 2)}}
+@media (max-width:600px){ .testi-card{ flex:0 0 100%}}
+.testi-stars{ color:var(--sage); margin-bottom:14px; display:flex; gap:3px}
+.testi-quote{ font-size:15px; color:var(--text); line-height:1.7; margin-bottom:20px; min-height:140px}
+.testi-person{ display:flex; align-items:center; gap:12px; margin-top:auto}
+.testi-avatar{
+  width:46px; height:46px; border-radius:50%;
+  background: var(--grad-accent);
+  display:grid; place-items:center; color:#081A27; font-weight:700; font-family:'Space Grotesk';
+}
+.testi-name{ font-weight:600; font-size:14px; color:var(--silver)}
+.testi-role{ font-size:12px; color:var(--text-muted)}
+.testi-controls{ display:flex; justify-content:center; gap:10px; margin-top:24px}
+.testi-btn{
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(141,182,176,.08); border:1px solid rgba(141,182,176,.2);
+  color:var(--text); transition:all .3s var(--ease);
+  display:grid; place-items:center;
+}
+.testi-btn:hover{ background:var(--grad-accent); color:#081A27; border-color:transparent}
+
+/* =========================================================
+   17. CERTIFICATIONS
+   ========================================================= */
+.cert-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px}
+.cert-card{
+  padding:24px; display:flex; gap:16px; align-items:center;
+  transition:transform .4s var(--ease), border-color .4s;
+}
+.cert-card:hover{ transform:translateX(6px); border-color:var(--sage)}
+.cert-badge{
+  flex-shrink:0; width:60px; height:60px; border-radius:14px;
+  display:grid; place-items:center; font-size:24px;
+  background:linear-gradient(135deg, rgba(141,182,176,.18), rgba(93,131,131,.1));
+  color:var(--sage); border:1px solid rgba(141,182,176,.25);
+}
+.cert-card h5{ font-family:'Space Grotesk'; font-size:16px; color:var(--silver); margin-bottom:4px}
+.cert-card .issuer{ font-size:13px; color:var(--text-dim); margin-bottom:2px}
+.cert-card .yr{ font-size:12px; color:var(--text-muted); letter-spacing:1px}
+
+/* =========================================================
+   18. AWARDS
+   ========================================================= */
+.awards-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
+.award-card{
+  border-radius:var(--r-lg); overflow:hidden;
+  background:rgba(8,26,39,.4); border:1px solid rgba(141,182,176,.15);
+  transition:transform .5s var(--ease), box-shadow .5s, border-color .5s;
+  backdrop-filter:blur(14px);
+}
+.award-card:hover{ transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,0,0,.45); border-color:rgba(141,182,176,.35)}
+.award-img{ position:relative; aspect-ratio:4/3; overflow:hidden; background:linear-gradient(135deg, var(--muted-teal), var(--dark-teal))}
+.award-img img{ width:100%; height:100%; object-fit:cover; transition:transform 1s var(--ease)}
+.award-card:hover .award-img img{ transform:scale(1.06)}
+.award-img::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(8,26,39,.8));
+}
+.award-body{ padding:22px 24px 24px}
+.award-body .yr-tag{
+  display:inline-block; padding:3px 10px; font-size:11px; letter-spacing:1.5px;
+  border-radius:99px; background:rgba(141,182,176,.12); color:var(--sage);
+  margin-bottom:10px;
+}
+.award-body h4{ font-family:'Space Grotesk'; font-size:19px; color:var(--silver); margin-bottom:6px}
+.award-body p{ font-size:14px; color:var(--text-dim)}
+
+/* =========================================================
+   19. BLOG
+   ========================================================= */
+.blog-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px}
+.blog-card{
+  border-radius:var(--r-lg); overflow:hidden;
+  background:rgba(8,26,39,.4); border:1px solid rgba(141,182,176,.15);
+  transition:transform .5s var(--ease), border-color .5s;
+  display:flex; flex-direction:column;
+}
+.blog-card:hover{ transform:translateY(-8px); border-color:rgba(141,182,176,.4)}
+.blog-img{ aspect-ratio:16/9; overflow:hidden; background:rgba(141,182,176,.05)}
+.blog-img img{ width:100%; height:100%; object-fit:cover; transition:transform 1s var(--ease)}
+.blog-card:hover .blog-img img{ transform:scale(1.06)}
+.blog-content{ padding:22px 24px 24px; flex:1; display:flex; flex-direction:column}
+.blog-meta{ display:flex; gap:14px; font-size:12px; color:var(--text-muted); margin-bottom:10px}
+.blog-meta i{ color:var(--sage); margin-right:4px}
+.blog-content h4{ font-family:'Space Grotesk'; font-size:19px; color:var(--silver); margin-bottom:8px; line-height:1.3}
+.blog-content p{ font-size:14px; color:var(--text-dim); margin-bottom:16px; flex:1}
+.blog-content .read-more{ color:var(--sage); font-size:13px; font-weight:500; align-self:flex-start}
+
+/* =========================================================
+   20. CONTACT
+   ========================================================= */
+.contact-grid{ display:grid; grid-template-columns:1fr 1.2fr; gap:32px}
+.contact-info{ padding:40px}
+.contact-info h3{ font-family:'Space Grotesk'; font-size:28px; margin-bottom:10px; background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent}
+.contact-info p{ color:var(--text-dim); margin-bottom:28px}
+.contact-list{ display:flex; flex-direction:column; gap:16px}
+.contact-item{
+  display:flex; align-items:center; gap:14px; padding:14px 16px;
+  border-radius:14px; background:rgba(141,182,176,.05);
+  border:1px solid rgba(141,182,176,.12);
+  transition:background .3s, transform .3s, border-color .3s;
+}
+.contact-item:hover{ background:rgba(141,182,176,.1); transform:translateX(6px); border-color:var(--sage)}
+.contact-item .ic{
+  width:40px; height:40px; border-radius:12px; flex-shrink:0;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg, rgba(141,182,176,.18), rgba(93,131,131,.1));
+  color:var(--sage); font-size:16px;
+}
+.contact-item .lbl{ font-size:11px; letter-spacing:2px; color:var(--text-muted); text-transform:uppercase}
+.contact-item .val{ font-size:14px; color:var(--text); margin-top:2px; word-break:break-word}
+
+.contact-socials{ display:flex; gap:8px; margin-top:24px; flex-wrap:wrap}
+
+.map-wrap{
+  margin-top:24px; height:200px; border-radius:16px; overflow:hidden;
+  border:1px solid rgba(141,182,176,.18);
+  background:linear-gradient(135deg, rgba(141,182,176,.08), rgba(93,131,131,.04));
+  position:relative;
+}
+.map-wrap::before{
+  content:''; position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(141,182,176,.06) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(141,182,176,.06) 39px 40px);
+}
+.map-wrap::after{
+  content:'\f3c5'; font-family:'Font Awesome 6 Free'; font-weight:900;
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-size:34px; color:var(--sage);
+  text-shadow:0 0 24px rgba(141,182,176,.6);
+}
+.map-wrap .pin{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:14px; height:14px; border-radius:50%; background:var(--sage);
+  box-shadow:0 0 0 6px rgba(141,182,176,.25), 0 0 20px var(--sage);
+  animation:ping 2.4s ease-out infinite;
+  z-index:1;
+}
+@keyframes ping{
+  0%{ box-shadow:0 0 0 0 rgba(141,182,176,.55), 0 0 20px var(--sage)}
+  100%{ box-shadow:0 0 0 30px rgba(141,182,176,0), 0 0 20px var(--sage)}
+}
+
+.contact-form{ padding:40px}
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px}
+.form-group{ margin-bottom:16px; position:relative}
+.form-group label{
+  display:block; font-size:12px; letter-spacing:1.5px; color:var(--text-muted);
+  text-transform:uppercase; margin-bottom:8px;
+}
+.form-group input, .form-group textarea{
+  width:100%; padding:14px 16px; border-radius:12px;
+  background:rgba(141,182,176,.05); border:1px solid rgba(141,182,176,.18);
+  color:var(--text); font-size:15px;
+  transition:border-color .3s, background .3s, box-shadow .3s;
+  outline:none;
+}
+.form-group input:focus, .form-group textarea:focus{
+  border-color:var(--sage); background:rgba(141,182,176,.1);
+  box-shadow:0 0 0 4px rgba(141,182,176,.1);
+}
+.form-group textarea{ resize:vertical; min-height:130px}
+.form-group.error input, .form-group.error textarea{ border-color:#e87c7c}
+.form-group .err-msg{
+  position:absolute; left:0; bottom:-18px; font-size:11px; color:#e87c7c;
+  opacity:0; transform:translateY(-4px); transition:opacity .25s, transform .25s;
+}
+.form-group.error .err-msg{ opacity:1; transform:translateY(0)}
+
+.form-success{
+  margin-top:16px; padding:14px 18px; border-radius:12px;
+  background:rgba(141,182,176,.12); border:1px solid var(--sage);
+  color:var(--sage); display:flex; align-items:center; gap:10px;
+  font-size:14px;
+  opacity:0; transform:translateY(10px);
+  transition:opacity .4s, transform .4s;
+}
+.form-success.show{ opacity:1; transform:translateY(0)}
+
+@media (max-width:900px){
+  .contact-grid{ grid-template-columns:1fr}
+  .form-row{ grid-template-columns:1fr}
+}
+
+/* =========================================================
+   21. FOOTER
+   ========================================================= */
+.footer{
+  padding:60px 24px 30px; position:relative;
+  border-top:1px solid rgba(141,182,176,.12);
+  background:linear-gradient(180deg, transparent, rgba(4,42,54,.5));
+}
+.footer-inner{
+  max-width:var(--maxw); margin:0 auto;
+  display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap:40px;
+}
+.footer-brand .brand{ margin-bottom:14px}
+.footer-brand p{ color:var(--text-dim); font-size:14px; max-width:360px}
+.footer h6{ font-family:'Space Grotesk'; font-size:14px; letter-spacing:2px; color:var(--sage); text-transform:uppercase; margin-bottom:18px}
+.footer ul{ list-style:none; display:flex; flex-direction:column; gap:10px}
+.footer ul a{ color:var(--text-dim); font-size:14px; transition:color .3s, padding-left .3s}
+.footer ul a:hover{ color:var(--sage); padding-left:6px}
+.footer-bottom{
+  max-width:var(--maxw); margin:40px auto 0; padding-top:24px;
+  border-top:1px solid rgba(141,182,176,.1);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  font-size:13px; color:var(--text-muted);
+}
+.footer-bottom .heart{ color:var(--sage)}
+
+@media (max-width:768px){
+  .footer-inner{ grid-template-columns:1fr; gap:30px}
+  .footer-bottom{ flex-direction:column; text-align:center}
+}
+
+/* =========================================================
+   22. BACK TO TOP + MUSIC TOGGLE
+   ========================================================= */
+.to-top{
+  position:fixed; bottom:28px; right:28px; width:48px; height:48px;
+  border-radius:50%; background:var(--grad-accent); color:#081A27;
+  display:grid; place-items:center; font-size:16px;
+  box-shadow:0 10px 24px rgba(93,131,131,.4);
+  opacity:0; visibility:hidden; transform:translateY(20px);
+  transition:opacity .4s, transform .4s, visibility .4s;
+  z-index:90;
+}
+.to-top.show{ opacity:1; visibility:visible; transform:translateY(0)}
+.to-top:hover{ transform:translateY(-4px)}
+
+.music-toggle{
+  position:fixed; bottom:28px; left:28px; width:48px; height:48px;
+  border-radius:50%;
+  background:rgba(8,26,39,.6); backdrop-filter:blur(14px);
+  border:1px solid rgba(141,182,176,.25);
+  color:var(--sage); font-size:16px;
+  display:grid; place-items:center;
+  z-index:90; transition:all .35s var(--ease);
+}
+.music-toggle:hover{ background:rgba(141,182,176,.15); border-color:var(--sage); transform:scale(1.05)}
+.music-toggle.playing{ color:var(--sage); box-shadow:0 0 0 4px rgba(141,182,176,.18)}
+.music-toggle .bars{ display:flex; gap:2px; align-items:flex-end; height:14px}
+.music-toggle .bars span{
+  width:3px; background:var(--sage); border-radius:2px;
+  animation:barDance 1.2s ease-in-out infinite;
+}
+.music-toggle .bars span:nth-child(1){ height:60%}
+.music-toggle .bars span:nth-child(2){ height:100%; animation-delay:-.2s}
+.music-toggle .bars span:nth-child(3){ height:50%; animation-delay:-.4s}
+.music-toggle .bars span:nth-child(4){ height:80%; animation-delay:-.6s}
+.music-toggle:not(.playing) .bars{ display:none}
+@keyframes barDance{
+  0%,100%{ transform:scaleY(.4)}
+  50%{ transform:scaleY(1)}
+}
+
+/* =========================================================
+   23. SCROLL REVEAL
+   ========================================================= */
+.reveal{
+  opacity:0; transform:translateY(40px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+}
+.reveal.visible{ opacity:1; transform:translateY(0)}
+.reveal.delay-1{ transition-delay:.1s}
+.reveal.delay-2{ transition-delay:.2s}
+.reveal.delay-3{ transition-delay:.3s}
+.reveal.delay-4{ transition-delay:.4s}
+.reveal.delay-5{ transition-delay:.5s}
+
+/* Counters */
+.counter{ font-family:'Space Grotesk'; font-size:clamp(36px, 5vw, 52px); font-weight:700; background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block}
+
+/* =========================================================
+   24. UTILITIES
+   ========================================================= */
+.center{ text-align:center}
+.mt-24{ margin-top:24px}
+.mt-40{ margin-top:40px}
+
+/* hide mobile menu social on desktop */
+@media (min-width:961px){ .mobile-menu{ display:none}}
+</style>
+</head>
+
+<body>
+
+<!-- ====================== LOADING SCREEN ====================== -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo">AD</div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Crafting perfection</div>
+</div>
+
+<!-- ====================== BACKGROUND LAYERS ====================== -->
+<div class="bg-layer" aria-hidden="true"></div>
+<div class="bg-blob b1" aria-hidden="true"></div>
+<div class="bg-blob b2" aria-hidden="true"></div>
+<div class="bg-blob b3" aria-hidden="true"></div>
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="bg-grain" aria-hidden="true"></div>
+
+<!-- ====================== CUSTOM CURSOR ====================== -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="mouse-glow" aria-hidden="true"></div>
+
+<!-- ====================== NAVIGATION ====================== -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#home" class="brand">
+    <span class="brand-mark">A</span>
+    <span>Abhigyan</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#timeline">Journey</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#contact" class="btn btn-primary btn-sm magnetic">Let's Talk</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+  <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+  <a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a>
+  <a href="#timeline"><i class="fa-solid fa-timeline"></i> Journey</a>
+  <a href="#services"><i class="fa-solid fa-grip"></i> Services</a>
+  <a href="#projects"><i class="fa-solid fa-rocket"></i> Work</a>
+  <a href="#blog"><i class="fa-solid fa-pen"></i> Blog</a>
+  <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+  <div class="mobile-socials">
+    <!-- UPDATE: your social profile URLs -->
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+  </div>
+</div>
+
+<!-- ====================== HERO ====================== -->
+<header class="hero section" id="home">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow reveal">
+        <span class="dot"></span> Available for opportunities
+      </div>
+
+      <h1>
+        <span class="first reveal">Hello, I'm</span>
+        <span class="name" id="heroName">
+          <!-- UPDATE: name letters auto-populated by JS, or just edit textContent below -->
+          <span class="char" style="animation-delay:.05s">K</span><span class="char" style="animation-delay:.1s">a</span><span class="char" style="animation-delay:.15s">i</span><span class="char" style="animation-delay:.2s">l</span><span class="char" style="animation-delay:.25s">a</span><span class="char" style="animation-delay:.3s">s</span><span class="char" style="animation-delay:.35s">h</span>
+          &nbsp;<span class="char" style="animation-delay:.45s">K</span><span class="char" style="animation-delay:.5s">h</span><span class="char" style="animation-delay:.55s">a</span><span class="char" style="animation-delay:.6s">i</span><span class="char" style="animation-delay:.65s">r</span>
+        </span>
+      </h1>
+
+      <div class="hero-typing reveal delay-1">
+        <span class="label">I'm a</span>
+        <span class="dynamic" id="typing"></span>
+      </div>
+
+      <p class="hero-tagline reveal delay-2">
+        Crafting pixel-perfect digital experiences where code meets creativity — turning ambitious ideas
+        into elegant, AI-powered realities that move people and solve real problems.
+      </p>
+
+      <div class="hero-ctas reveal delay-3">
+        <a href="#projects" class="btn btn-primary magnetic">
+          <i class="fa-solid fa-rocket"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-ghost magnetic">
+          <i class="fa-regular fa-paper-plane"></i> Contact Me
+        </a>
+        <a href="#" id="hireMeBtn" class="btn btn-ghost magnetic">
+          <i class="fa-solid fa-handshake"></i> Hire Me
+        </a>
+      </div>
+
+      <div class="hero-socials reveal delay-4">
+        <!-- UPDATE: each href with your profile URL -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-portrait-wrap reveal delay-2" id="portraitWrap">
+      <div class="hero-portrait-ring" aria-hidden="true"></div>
+      <div class="hero-portrait-ring r2" aria-hidden="true"></div>
+      <div class="hero-portrait" id="portrait">
+        <!-- UPDATE: replace src with your photo URL -->
+        <img src="https://picsum.photos/seed/AbhigyanDhar/800/800" alt="Abhigyan Dhar portrait placeholder" loading="eager" />
+      </div>
+      <div class="hero-floating-icon f1" aria-hidden="true"><i class="fa-brands fa-html5"></i></div>
+      <div class="hero-floating-icon f2" aria-hidden="true"><i class="fa-brands fa-js"></i></div>
+      <div class="hero-floating-icon f3" aria-hidden="true"><i class="fa-brands fa-python"></i></div>
+      <div class="hero-floating-icon f4" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
+      <div class="hero-floating-icon f5" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== ABOUT ====================== -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">About Me</div>
+      <h2 class="section-title reveal delay-1">Big dreams, built brick by brick.</h2>
+      <p class="section-sub reveal delay-2">Perfectionist by nature, builder by passion — and just getting started.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-card glass reveal">
+        <div class="about-image-wrap">
+          <!-- UPDATE: replace with your photo URL -->
+          <img src="https://picsum.photos/seed/Abhigyanabout/700/800" alt="About Abhigyan Dhar placeholder" loading="lazy" />
+          <div class="about-quote">"Average is the enemy. I don't ship average."</div>
+        </div>
+      </div>
+
+      <div class="about-card glass reveal delay-1">
+        <div class="about-content">
+          <h3>A perfectionist with an engineer's mind.</h3>
+          <p>
+            I'm a person with big dreams, and I treat every dream as a project — achieved brick by brick, no shortcuts.
+            I may not be the most naturally talented person in the room, but I have the rare ability to make the
+            talented ones work for me. That, paired with my never-satisfied-with-average mindset, keeps me pushing.
+          </p>
+          <p>
+            I understand human management and power generation deeply — knowing how to lead people and channel
+            energy toward outcomes. Combined with strong willpower, almost anything I set my mind to becomes reality.
+          </p>
+          <p>
+            I'm endlessly curious. The hunger to learn new things keeps me awake at night in the best way possible,
+            and I love integrating AI into every line of work to move faster and smarter than the average person.
+          </p>
+
+          <div class="about-meta">
+            <div class="meta-item">
+              <div class="lbl">Name</div>
+              <div class="val">Abhigyan Dhar</div>
+            </div>
+            <div class="meta-item">
+              <div class="lbl">Title</div>
+              <div class="val">Perfectionist</div>
+            </div>
+            <div class="meta-item">
+              <div class="lbl">Education</div>
+              <div class="val">Electrical Engineer</div>
+            </div>
+            <div class="meta-item">
+              <div class="lbl">Location</div>
+              <!-- UPDATE: address -->
+              <div class="val">Address line, 98463</div>
+            </div>
+            <div class="meta-item">
+              <div class="lbl">Email</div>
+              <!-- UPDATE: email -->
+              <div class="val">xyz@gmail.com</div>
+            </div>
+            <div class="meta-item">
+              <div class="lbl">Availability</div>
+              <div class="val">Open to work</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counters -->
+    <div class="services-grid mt-40" style="grid-template-columns:repeat(auto-fit, minmax(180px,1fr))">
+      <div class="glass service-card center reveal">
+        <div class="counter" data-target="5">0</div>
+        <div style="color:var(--text-dim); font-size:14px; margin-top:4px">Projects Shipped</div>
+      </div>
+      <div class="glass service-card center reveal delay-1">
+        <div class="counter" data-target="1">0</div>
+        <div style="color:var(--text-dim); font-size:14px; margin-top:4px">Internship</div>
+      </div>
+      <div class="glass service-card center reveal delay-2">
+        <div class="counter" data-target="4">0</div>
+        <div style="color:var(--text-dim); font-size:14px; margin-top:4px">Programming Languages</div>
+      </div>
+      <div class="glass service-card center reveal delay-3">
+        <div class="counter" data-target="100">0</div>
+        <div style="color:var(--text-dim); font-size:14px; margin-top:4px">% Commitment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SKILLS ====================== -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Skills</div>
+      <h2 class="section-title reveal delay-1">Tools & capabilities</h2>
+      <p class="section-sub reveal delay-2">A focused stack — and the discipline to keep getting better.</p>
+    </div>
+
+    <div class="skills-tabs reveal">
+      <button class="skill-tab active" data-cat="tech">Technical</button>
+      <button class="skill-tab" data-cat="lang">Languages</button>
+      <button class="skill-tab" data-cat="soft">Soft Skills</button>
+    </div>
+
+    <!-- Technical -->
+    <div class="skills-grid" data-group="tech">
+      <div class="skill-card glass reveal">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="95"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">AI Integration</div>
+        <div class="skill-desc">Embedding AI into any workflow</div>
+      </div>
+      <div class="skill-card glass reveal delay-1">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="92"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Frontend Development</div>
+        <div class="skill-desc">HTML5, modern CSS, JS</div>
+      </div>
+      <div class="skill-card glass reveal delay-2">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="88"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Website Building</div>
+        <div class="skill-desc">Landing pages, portfolios, full sites</div>
+      </div>
+      <div class="skill-card glass reveal delay-3">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="90"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Debugging & QA</div>
+        <div class="skill-desc">Fixing bugs faster than they appear</div>
+      </div>
+      <div class="skill-card glass reveal delay-4">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="96"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Rapid Learning</div>
+        <div class="skill-desc">New tools, new stacks — fast</div>
+      </div>
+      <div class="skill-card glass reveal delay-5">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="85"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Problem Solving</div>
+        <div class="skill-desc">Turning obstacles into systems</div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="skills-grid" data-group="lang" style="display:none">
+      <div class="skill-card glass reveal">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="95"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">HTML5</div>
+        <div class="skill-desc">Semantic, accessible markup</div>
+      </div>
+      <div class="skill-card glass reveal delay-1">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="93"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">CSS3</div>
+        <div class="skill-desc">Modern layouts, animations, glassmorphism</div>
+      </div>
+      <div class="skill-card glass reveal delay-2">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="88"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-desc">ES6+, DOM, async, animations</div>
+      </div>
+      <div class="skill-card glass reveal delay-3">
+        <div class="skill-circle">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="56"/>
+            <circle class="fill" cx="60" cy="60" r="56" data-pct="82"/>
+          </svg>
+          <div class="pct">0%</div>
+        </div>
+        <div class="skill-name">Python</div>
+        <div class="skill-desc">Scripting, automation, AI workflows</div>
+      </div>
+    </div>
+
+    <!-- Soft skills -->
+    <div class="soft-skills" data-group="soft" style="display:none">
+      <div class="soft-skill glass reveal"><i class="fa-solid fa-people-group"></i><span>Human Resource Management</span></div>
+      <div class="soft-skill glass reveal delay-1"><i class="fa-solid fa-bolt"></i><span>Highly Motivated</span></div>
+      <div class="soft-skill glass reveal delay-2"><i class="fa-solid fa-bullseye"></i><span>Goal Orientation</span></div>
+      <div class="soft-skill glass reveal delay-3"><i class="fa-solid fa-brain"></i><span>Rapid Learning</span></div>
+      <div class="soft-skill glass reveal delay-4"><i class="fa-solid fa-handshake"></i><span>Leadership</span></div>
+      <div class="soft-skill glass reveal delay-5"><i class="fa-solid fa-lightbulb"></i><span>Creative Thinking</span></div>
+      <div class="soft-skill glass reveal"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
+      <div class="soft-skill glass reveal delay-1"><i class="fa-solid fa-fire"></i><span>Strong Willpower</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TIMELINE / JOURNEY ====================== -->
+<section class="section" id="timeline">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Journey</div>
+      <h2 class="section-title reveal delay-1">Education & Experience</h2>
+      <p class="section-sub reveal delay-2">The path so far — every step purposeful.</p>
+    </div>
+
+    <div class="timeline-wrap">
+      <!-- UPDATE: company names, roles, dates, descriptions for internships -->
+      
+
+      <!-- <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2024 — 5 Months</span>
+          <h4>Software Development Intern</h4>
+          <div class="role">[Company Name] · Full-time Internship</div>
+          <p>Worked on real-world projects, collaborated with senior developers, deepened understanding of
+             production-grade code, debugging, and shipping features under deadlines.</p>
+        </div>
+      </div> -->
+
+      <!-- <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2026 — 7 days</span>
+          <h4>Data Analysis</h4>
+          <div class="role">EdVyro</div>
+          <p>First professional exposure to industry workflows, learned team collaboration, version control,
+             and delivered small but meaningful contributions to live projects.</p>
+        </div>
+      </div> -->
+      
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2026 — 7 days Internship</span>
+          <h4>Data Analysis</h4>
+          <div class="role">EdVyro</div>
+          <p>First professional exposure to industry workflows, learned team collaboration, version control,
+             and delivered small but meaningful contributions to live projects.</p>
+        </div>
+      </div>
+      
+      <!-- <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2018 — 2020</span>
+          <h4>Higher Secondary (Science)</h4>
+          <div class="role">[School Name]</div>
+          <p>Built the discipline and curiosity that still drives me today. Discovered the joy of building
+             things from scratch.</p>
+        </div> -->
+
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2025 — 202*</span>
+          <h4>Diploma in Electonics and Telecommunication</h4>
+          <div class="role">SGP</div>
+          <p>Studied core Electronics and Telecommunication Engineering concepts while self-teaching Web Development, Python and AI
+             integration — a foundation that shapes how I think about systems and scale.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="dot"></span>
+        <div class="timeline-card glass">
+          <span class="timeline-date">2024 - 2025</span>
+          <h4>Secondary</h4>
+          <div class="role">RHSS</div>
+          <p>Studied Physics, Chemistry, Mathematics, Biology, English, Information Technology  while self-teaching AI tools and basic of Web Development - a foundation that change how I think about AI.</p>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SERVICES ====================== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Services</div>
+      <h2 class="section-title reveal delay-1">What I can do for you</h2>
+      <p class="section-sub reveal delay-2">From a quick bug fix to a full product build — done right.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card glass reveal">
+        <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+        <h4>Coding & Development</h4>
+        <p>Clean, scalable code in HTML, CSS, JavaScript, and Python — built to last and easy to maintain.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="service-card glass reveal delay-1">
+        <div class="service-icon"><i class="fa-solid fa-bug-slash"></i></div>
+        <h4>Bug Fixing</h4>
+        <p>Fast, precise debugging. I find the root cause, not just the symptom — and I document the fix.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="service-card glass reveal delay-2">
+        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+        <h4>Website Building</h4>
+        <p>Beautiful, responsive, fast-loading websites — portfolios, landing pages, business sites.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="service-card glass reveal delay-3">
+        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h4>AI Integration</h4>
+        <p>Smart features powered by AI — automation, content, chat, recommendations — done efficiently.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="service-card glass reveal delay-4">
+        <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+        <h4>UI / UX Design</h4>
+        <p>Thoughtful interfaces with glassmorphism, micro-interactions, and accessibility baked in.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+      <div class="service-card glass reveal delay-5">
+        <div class="service-icon"><i class="fa-solid fa-cubes"></i></div>
+        <h4>Custom Solutions</h4>
+        <p>Anything else you need built? Tell me the problem — I'll engineer the solution.</p>
+        <span class="more">Explore <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PROJECTS ====================== -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Featured Work</div>
+      <h2 class="section-title reveal delay-1">Projects that speak</h2>
+      <p class="section-sub reveal delay-2">A selection of recent builds — clean code, premium feel, real outcomes.</p>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+      <!-- ============= HOW TO ADD A NEW PROJECT =============
+           Copy any .project-card block below and paste it before the closing
+           of #projectsGrid. Update:
+             - data-title (used by hover overlay)
+             - <img src>     → your preview image URL
+             - <h4>          → project name
+             - <p>           → short description
+             - .project-tech spans → technologies used
+             - "Live Demo" href   → project URL (opens in new tab)
+             - "GitHub"   href   → GitHub URL (opens in new tab)
+             - "Visit Project" href → your other webpage URL (opens in new tab)
+           ===================================================== -->
+
+      <!-- Project 1 -->
+      <!-- <article class="project-card reveal">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project1/800/500" alt="Neural Canvas preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>AI</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Neural Canvas</h4>
+          <p>An AI-powered image generation platform with prompt engineering, style presets, and a premium gallery.</p>
+          <div class="project-actions">
+            <!-- UPDATE: project url / github url -->
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 2 -->
+      <!-- <article class="project-card reveal delay-1">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project2/800/500" alt="Pulse Analytics preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>JavaScript</span><span>Charts</span><span>API</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Pulse Analytics</h4>
+          <p>Real-time data visualization dashboard with interactive charts, filters, and live metrics.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 3 -->
+      <article class="project-card reveal delay-2">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project3/800/500" alt="Echo Chat preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>JavaScript</span><span>WebSocket</span><span>UI</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Vault Chat</h4>
+          <p>Real-time messaging app with password protected rooms, presence indicators, and a secure look UI.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <!-- <article class="project-card reveal">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project4/800/500" alt="Cipher Vault preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>JavaScript</span><span>Crypto</span><span>Storage</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Cipher Vault</h4>
+          <p>Secure password manager with encryption, categories, and a beautiful dark UI.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 5 -->
+      <!-- <article class="project-card reveal delay-1">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project5/800/500" alt="Stellar Commerce preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>HTML</span><span>CSS</span><span>JS</span><span>Cart</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Stellar Commerce</h4>
+          <p>Modern e-commerce storefront with product filters, cart, checkout flow, and animations.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 6 -->
+      <!-- <article class="project-card reveal delay-2">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project6/800/500" alt="Vision Flow preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>Python</span><span>AI</span><span>Vision</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Vision Flow</h4>
+          <p>Computer-vision web app that detects objects, faces, and text — wrapped in a premium UI.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 7 -->
+      <!-- <article class="project-card reveal">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project7/800/500" alt="Code Forge preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>JavaScript</span><span>Editor</span><span>Learning</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Code Forge</h4>
+          <p>Interactive coding-learning platform with lessons, challenges, and a built-in code editor.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 8 -->
+      <!-- <article class="project-card reveal delay-1">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project8/800/500" alt="Quantum Tasks preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>JavaScript</span><span>Productivity</span><span>PWA</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Quantum Tasks</h4>
+          <p>Productivity & task-management app with smart prioritization, reminders, and analytics.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+      <!-- Project 9 -->
+      <article class="project-card reveal delay-2">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project9/800/500" alt="Zenith Portfolio preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Abhigyan's Portfolio</h4>
+          <p>A premium portfolio template with glassmorphism, animations, and easy customization.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 10 -->
+      <!-- <article class="project-card reveal">
+        <div class="project-thumb">
+          <img src="https://picsum.photos/seed/project10/800/500" alt="Aurora Bot preview" loading="lazy" />
+          <div class="project-overlay">
+            <div class="project-tech">
+              <span>Python</span><span>AI</span><span>Bots</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-body">
+          <h4>Aurora Bot</h4>
+          <p>AI-powered chatbot platform with custom personalities, integrations, and analytics.</p>
+          <div class="project-actions">
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm magnetic"><i class="fa-solid fa-up-right-from-square"></i> Live Demo</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="project url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm magnetic"><i class="fa-solid fa-arrow-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </article> -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================== GALLERY ====================== -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Gallery</div>
+      <h2 class="section-title reveal delay-1">Moments & spaces</h2>
+      <p class="section-sub reveal delay-2">A small visual diary — replace these placeholders with your own.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="https://picsum.photos/seed/gallery1/900/700" alt="Gallery 1 placeholder" loading="lazy"/><div class="cap">Workspace vibes</div></div>
+      <div class="gallery-item reveal delay-1"><img src="https://picsum.photos/seed/gallery2/500/500" alt="Gallery 2 placeholder" loading="lazy"/><div class="cap">Setup</div></div>
+      <div class="gallery-item reveal delay-2"><img src="https://picsum.photos/seed/gallery3/500/500" alt="Gallery 3 placeholder" loading="lazy"/><div class="cap">Coding nights</div></div>
+      <div class="gallery-item reveal delay-3"><img src="https://picsum.photos/seed/gallery4/500/500" alt="Gallery 4 placeholder" loading="lazy"/><div class="cap">Coffee + code</div></div>
+      <div class="gallery-item reveal delay-4"><img src="https://picsum.photos/seed/gallery5/500/500" alt="Gallery 5 placeholder" loading="lazy"/><div class="cap">Behind the scenes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TESTIMONIALS ====================== -->
+<!-- <section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Testimonials</div>
+      <h2 class="section-title reveal delay-1">Kind words from kind people</h2>
+      <p class="section-sub reveal delay-2">Real collaborators. Real outcomes.</p>
+    </div>
+
+    <div class="testi-track-wrap reveal">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card glass">
+          <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testi-quote">"Abhigyan transforms ideas into clean, working reality faster than anyone I've worked with. He doesn't stop at 'done' — he pushes until it's perfect."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">SC</div>
+            <div><div class="testi-name">[Person Name]</div><div class="testi-role">Product Manager · [Company]</div></div>
+          </div>
+        </div>
+        <div class="testi-card glass">
+          <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testi-quote">"His ability to integrate AI into everyday workflows is exceptional. He built tools that genuinely changed how our team operates."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">MT</div>
+            <div><div class="testi-name">[Person Name]</div><div class="testi-role">CTO · [Company]</div></div>
+          </div>
+        </div>
+        <div class="testi-card glass">
+          <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testi-quote">"Working with Abhigyan was effortless. He understood the design intent immediately and brought his own ideas that made everything better."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">PS</div>
+            <div><div class="testi-name">[Person Name]</div><div class="testi-role">Designer · [Company]</div></div>
+          </div>
+        </div>
+        <div class="testi-card glass">
+          <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="testi-quote">"Exceptional problem solver. He doesn't just write code — he thinks about users, business, and long-term maintainability."</p>
+          <div class="testi-person">
+            <div class="testi-avatar">DK</div>
+            <div><div class="testi-name">[Person Name]</div><div class="testi-role">Founder · [Startup]</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-controls reveal">
+      <button class="testi-btn magnetic" id="testiPrev" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="testi-btn magnetic" id="testiNext" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section> -->
+
+<!-- ====================== CERTIFICATIONS ====================== -->
+<section class="section" id="certifications">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Certifications</div>
+      <h2 class="section-title reveal delay-1">Credentials & learning</h2>
+      <!-- <p class="section-sub reveal delay-2">Replace these placeholders with your actual certificates.</p> -->
+    </div>
+
+    
+     <div class="cert-grid">
+       
+      <div class="cert-card glass reveal">
+        <div class="cert-badge"><i class="fa-brands fa-aws"></i></div>
+        <div>
+          <h5>Fundamentals of Remote Sensing</h5>
+          <div class="issuer">NASA</div>
+          <div class="yr">2026</div>
+        </div>
+      </div>
+       
+      <div class="cert-card glass reveal delay-1">
+        <div class="cert-badge"><i class="fa-brands fa-google"></i></div>
+        <div>
+          <h5>
+            <ul>
+              <li>Claude 101</li>
+              <li>Claude Code 101</li>
+              <li>AI Fluency: Framework & Foundations</li>
+            </ul>
+          </h5>
+          <div class="issuer">Anthropic</div>
+          <div class="yr">2026</div>
+        </div>
+      </div>
+       
+      <div class="cert-card glass reveal delay-2">
+        <div class="cert-badge"><i class="fa-brands fa-meta"></i></div>
+        <div>
+          <h5>Applied AI Foundations</h5>
+          <div class="issuer">OpenAI</div>
+          <div class="yr">2026</div>
+        </div>
+      </div>    
+       
+      <div class="cert-card glass reveal delay-3">
+        <div class="cert-badge"><i class="fa-brands fa-microsoft"></i></div>
+        <div>
+          <h5>AI Skills Passport</h5>
+          <div class="issuer">Microsoft and EY</div>
+          <div class="yr">2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== AWARDS ====================== -->
+<section class="section" id="awards">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Awards</div>
+      <h2 class="section-title reveal delay-1">Recognition & milestones</h2>
+      <!-- <p class="section-sub reveal delay-2">Replace with your real awards — or remove this section entirely.</p> -->
+    </div>
+
+    <div class="awards-grid">
+      <article class="award-card reveal">
+        <div class="award-img">
+          <!-- UPDATE: replace src with your award photo -->
+          <img src="https://picsum.photos/seed/award1/600/450" alt="Award 1 placeholder" loading="lazy"/>
+        </div>
+        <div class="award-body">
+          <span class="yr-tag">2026</span>
+          <h4>Best Innovation Award</h4>
+          <p>Recognized for Building a Innovating way of Travelling and Transport</p>
+        </div>
+      </article>
+
+      <article class="award-card reveal delay-1">
+        <div class="award-img">
+          <img src="https://picsum.photos/seed/award2/600/450" alt="Award 2 placeholder" loading="lazy"/>
+        </div>
+        <div class="award-body">
+          <span class="yr-tag">2026</span>
+          <h4>Technical Modle Compitetion</h4>
+          <p>Appreciation for an AI-powered Agricultural Solution.</p>
+        </div>
+      </article>
+
+      <article class="award-card reveal delay-2">
+        <div class="award-img">
+          <img src="https://picsum.photos/seed/award3/600/450" alt="Award 3 placeholder" loading="lazy"/>
+        </div>
+        <div class="award-body">
+          <span class="yr-tag">2026</span>
+          <h4>Outstanding Performer</h4>
+          <p>Appreciation while working In a Programming Project</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BLOG ====================== -->
+<section class="section" id="blog">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Journal</div>
+      <h2 class="section-title reveal delay-1">Recent writing</h2>
+      <p class="section-sub reveal delay-2">Thoughts on code, AI, and building things that matter.</p>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card reveal">
+        <div class="blog-img"><img src="https://picsum.photos/seed/blog1/800/450" alt="Blog post 1 placeholder" loading="lazy"/></div>
+        <div class="blog-content">
+          <div class="blog-meta"><span><i class="fa-regular fa-calendar"></i> Mar 2025</span><span><i class="fa-regular fa-clock"></i> 6 min read</span></div>
+          <h4>The Art of Perfection in Code</h4>
+          <p>Why settling for "it works" is the most expensive decision you can make as a developer.</p>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-1">
+        <div class="blog-img"><img src="https://picsum.photos/seed/blog2/800/450" alt="Blog post 2 placeholder" loading="lazy"/></div>
+        <div class="blog-content">
+          <div class="blog-meta"><span><i class="fa-regular fa-calendar"></i> Feb 2025</span><span><i class="fa-regular fa-clock"></i> 8 min read</span></div>
+          <h4>Integrating AI: Beyond the Hype</h4>
+          <p>Practical ways to weave AI into real workflows — without overengineering or losing the human touch.</p>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-2">
+        <div class="blog-img"><img src="https://picsum.photos/seed/blog3/800/450" alt="Blog post 3 placeholder" loading="lazy"/></div>
+        <div class="blog-content">
+          <div class="blog-meta"><span><i class="fa-regular fa-calendar"></i> Jan 2025</span><span><i class="fa-regular fa-clock"></i> 5 min read</span></div>
+          <h4>Building Lightning-Fast Websites</h4>
+          <p>A practical checklist for shipping sites that load instantly and feel premium on every device.</p>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card reveal delay-3">
+        <div class="blog-img"><img src="https://picsum.photos/seed/blog4/800/450" alt="Blog post 4 placeholder" loading="lazy"/></div>
+        <div class="blog-content">
+          <div class="blog-meta"><span><i class="fa-regular fa-calendar"></i> Dec 2024</span><span><i class="fa-regular fa-clock"></i> 7 min read</span></div>
+          <h4>The Future of Web Development</h4>
+          <p>Where the web is heading, what to learn next, and how to stay relevant without burning out.</p>
+          <a href="#" class="read-more">Read more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONTACT ====================== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow reveal">Contact</div>
+      <h2 class="section-title reveal delay-1">Let's build something</h2>
+      <p class="section-sub reveal delay-2">Have an idea, a project, or just want to talk? My inbox is open.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info glass reveal">
+        <h3>Reach out</h3>
+        <p>I usually reply within 24 hours. For urgent work, ping me on Discord or Telegram.</p>
+
+        <div class="contact-list">
+          <a class="contact-item" href="mailto:xyz@gmail.com">
+            <div class="ic"><i class="fa-solid fa-envelope"></i></div>
+            <div><div class="lbl">Email</div><div class="val">***@gmail.com</div></div>
+          </a>
+          <a class="contact-item" href="tel:9876543210">
+            <div class="ic"><i class="fa-solid fa-phone"></i></div>
+            <div><div class="lbl">Phone</div><div class="val">+91 ***** ***102</div></div>
+          </a>
+          <div class="contact-item">
+            <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+            <!-- UPDATE: address -->
+            <div><div class="lbl">Location</div><div class="val">India</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="ic"><i class="fa-solid fa-clock"></i></div>
+            <div><div class="lbl">Working hours</div><div class="val">Mon — Sat · 9 AM — 8 PM</div></div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <!-- UPDATE: social URLs -->
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+
+        <div class="map-wrap" aria-label="Location map placeholder">
+          <div class="pin"></div>
+        </div>
+      </div>
+
+      <form class="contact-form glass reveal delay-1" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="John Doe" required />
+            <span class="err-msg">Please enter your name</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="john@example.com" required />
+            <span class="err-msg">Please enter a valid email</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="What's this about?" />
+          <span class="err-msg">Subject is required</span>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+          <span class="err-msg">Please write a message</span>
+        </div>
+        <button type="submit" class="btn btn-primary magnetic" style="width:100%; justify-content:center">
+          <i class="fa-regular fa-paper-plane"></i> Send Message
+        </button>
+        <div class="form-success" id="formSuccess" role="status">
+          <i class="fa-solid fa-circle-check"></i> Thanks! Your message has been sent successfully.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="brand">
+        <span class="brand-mark">K</span>
+        <span>Abhigyan Dhar</span>
+      </a>
+      <p>A perfectionist crafting premium digital experiences through code, AI, and relentless attention to detail.</p>
+    </div>
+    <div>
+      <h6>Navigate</h6>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>Elsewhere</h6>
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+        <li><a href="#" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> Abhigyan Dhar · All rights reserved.</div>
+    <div>Crafted with <span class="heart">Motivation</span> &amp; a lot of coffee</div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="to-top magnetic" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- Music toggle -->
+<button class="music-toggle" id="musicToggle" aria-label="Toggle ambient sound">
+  <i class="fa-solid fa-volume-xmark" id="musicIcon"></i>
+  <div class="bars" id="musicBars"><span></span><span></span><span></span><span></span></div>
+</button>
+
+<!-- SVG gradient defs reused by skill circles -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="skillGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8CDCF"/>
+      <stop offset="50%" stop-color="#8DB6B0"/>
+      <stop offset="100%" stop-color="#5D8383"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<script>
+/* =========================================================
+   1. UTILITIES
+   ========================================================= */
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* =========================================================
+   2. LOADING SCREEN
+   ========================================================= */
+window.addEventListener('load', () => {
+  setTimeout(() => $('#loader').classList.add('hidden'), 700);
+});
+
+/* =========================================================
+   3. CUSTOM CURSOR + MOUSE GLOW
+   ========================================================= */
+if (!isTouch) {
+  const dot = $('.cursor-dot');
+  const ring = $('.cursor-ring');
+  const glow = $('.mouse-glow');
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let rx = mx, ry = my, gx = mx, gy = my;
+
+  window.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+  }, { passive: true });
+
+  function loop() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    gx += (mx - gx) * 0.08;
+    gy += (my - gy) * 0.08;
+    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%, -50%)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // Cursor hover state for interactive elements
+  $$('a, button, .project-card, .gallery-item, .service-card, .skill-card, .blog-card, .award-card, .cert-card, .soft-skill, .testi-card, .contact-item, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+}
+
+/* =========================================================
+   4. PARTICLES (Canvas)
+   ========================================================= */
+(() => {
+  const canvas = $('#particles');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [];
+  const COUNT = window.innerWidth < 768 ? 40 : 80;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: Math.random() * 1.6 + 0.4,
+      a: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200, 205, 207, ${p.a})`;
+      ctx.fill();
+    });
+    // Connecting lines for nearby particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 13000) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(141, 182, 176, ${0.12 * (1 - d2 / 13000)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  if (!reduceMotion) draw();
+})();
+
+/* =========================================================
+   5. TYPING ANIMATION
+   ========================================================= */
+(() => {
+  const roles = ['Perfectionist', 'Web Developer', 'AI Integrator', 'Problem Solver', 'Fast Learner', 'Builder of Dreams'];
+  const el = $('#typing');
+  let roleIdx = 0, charIdx = 0, deleting = false;
+
+  function tick() {
+    const role = roles[roleIdx];
+    el.textContent = role.substring(0, charIdx);
+    if (!deleting) {
+      charIdx++;
+      if (charIdx > role.length) { deleting = true; setTimeout(tick, 1600); return; }
+      setTimeout(tick, 70 + Math.random() * 50);
+    } else {
+      charIdx--;
+      if (charIdx < 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; setTimeout(tick, 400); return; }
+      setTimeout(tick, 35);
+    }
+  }
+  setTimeout(tick, 1200);
+})();
+
+/* =========================================================
+   6. NAVIGATION — hide on scroll, active highlight, mobile menu
+   ========================================================= */
+(() => {
+  const nav = $('#nav');
+  const sections = $$('section, header.hero');
+  const links = $$('.nav-links a');
+  const hamburger = $('#hamburger');
+  const mobileMenu = $('#mobileMenu');
+
+  // Hide on scroll down, show on scroll up
+  let lastY = 0, ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y > 200) {
+          if (y > lastY) nav.classList.add('hidden');
+          else nav.classList.remove('hidden');
+        } else {
+          nav.classList.remove('hidden');
+        }
+        nav.classList.toggle('scrolled', y > 30);
+        lastY = y;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Active section highlight
+  const setActive = () => {
+    const y = window.scrollY + window.innerHeight / 3;
+    let current = links[0]?.getAttribute('href');
+    sections.forEach(s => {
+      if (s.offsetTop <= y) current = '#' + s.id;
+    });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === current));
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // Mobile menu
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    mobileMenu.setAttribute('aria-hidden', !open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      mobileMenu.setAttribute('aria-hidden', true);
+    });
+  });
+})();
+
+/* =========================================================
+   7. SCROLL REVEAL (IntersectionObserver)
+   ========================================================= */
+(() => {
+  const items = $$('.reveal, .timeline-item');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  items.forEach(i => io.observe(i));
+})();
+
+/* =========================================================
+   8. SKILL CIRCLE PROGRESS (animate on view)
+   ========================================================= */
+(() => {
+  const circles = $$('.skill-circle .fill');
+  const C = 2 * Math.PI * 56; // circumference
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const fill = e.target;
+      const pct = parseInt(fill.getAttribute('data-pct'), 10);
+      const offset = C - (pct / 100) * C;
+      fill.style.strokeDashoffset = C;
+      // animate
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          fill.style.strokeDashoffset = offset;
+        });
+      });
+      // number counter
+      const num = fill.closest('.skill-circle').querySelector('.pct');
+      const dur = 1400;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        num.textContent = Math.round(pct * eased) + '%';
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(fill);
+    });
+  }, { threshold: 0.4 });
+  circles.forEach(c => io.observe(c));
+})();
+
+/* =========================================================
+   9. COUNTER ANIMATION (about counters)
+   ========================================================= */
+(() => {
+  const counters = $$('.counter');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target, 10);
+      const dur = 1600;
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased) + (target === 100 ? '%' : '+');
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+})();
+
+/* =========================================================
+   10. SKILL TABS
+   ========================================================= */
+$$('.skill-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    $$('.skill-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const cat = tab.dataset.cat;
+    $$('[data-group]').forEach(g => {
+      g.style.display = g.dataset.group === cat ? '' : 'none';
+    });
+  });
+});
+
+/* =========================================================
+   11. 3D TILT on cards
+   ========================================================= */
+if (!isTouch && !reduceMotion) {
+  $$('.project-card, .service-card, .skill-card, .award-card, .blog-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      const rx = ((y / r.height) - 0.5) * -8;
+      const ry = ((x / r.width) - 0.5) * 8;
+      card.style.transform = `translateY(-8px) perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+/* =========================================================
+   12. MAGNETIC BUTTONS
+   ========================================================= */
+if (!isTouch && !reduceMotion) {
+  $$('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+}
+
+/* =========================================================
+   13. RIPPLE EFFECT on .btn
+   ========================================================= */
+$$('.btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const r = btn.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const size = Math.max(r.width, r.height);
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = (e.clientX - r.left - size / 2) + 'px';
+    ripple.style.top = (e.clientY - r.top - size / 2) + 'px';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+
+/* =========================================================
+   14. TESTIMONIALS CAROUSEL
+   ========================================================= */
+(() => {
+  const track = $('#testiTrack');
+  const prev = $('#testiPrev');
+  const next = $('#testiNext');
+  if (!track) return;
+  let offset = 0;
+  const cards = $$('.testi-card', track);
+  function step(dir) {
+    const card = cards[0];
+    const w = card.offsetWidth + 24; // gap
+    const visible = Math.max(1, Math.floor(track.parentElement.offsetWidth / w));
+    const max = Math.max(0, cards.length - visible);
+    offset = Math.max(0, Math.min(max, offset + dir));
+    track.style.transform = `translateX(${-offset * w}px)`;
+  }
+  prev.addEventListener('click', () => step(-1));
+  next.addEventListener('click', () => step(1));
+  window.addEventListener('resize', () => { offset = 0; track.style.transform = 'translateX(0)'; });
+})();
+
+/* =========================================================
+   15. BACK TO TOP
+   ========================================================= */
+(() => {
+  const btn = $('#toTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 600);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* =========================================================
+   16. CONTACT FORM (frontend validation)
+   ========================================================= */
+(() => {
+  const form = $('#contactForm');
+  const success = $('#formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+    $$('.form-group', form).forEach(g => g.classList.remove('error'));
+
+    const name = $('#name'), email = $('#email'), message = $('#message');
+    if (!name.value.trim()) { name.closest('.form-group').classList.add('error'); valid = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { email.closest('.form-group').classList.add('error'); valid = false; }
+    if (!message.value.trim()) { message.closest('.form-group').classList.add('error'); valid = false; }
+
+    if (valid) {
+      success.classList.add('show');
+      form.reset();
+      setTimeout(() => success.classList.remove('show'), 5000);
+    }
+  });
+})();
+
+/* =========================================================
+   17. AMBIENT SOUND (Web Audio API — soft pad)
+   ========================================================= */
+(() => {
+  const btn = $('#musicToggle');
+  const icon = $('#musicIcon');
+  let ctx, masterGain, oscillators = [], started = false, playing = false;
+
+  function build() {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = ctx.createGain();
+    masterGain.gain.value = 0;
+    masterGain.connect(ctx.destination);
+
+    // Soft low-pass filter for warmth
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 800;
+    filter.Q.value = 0.4;
+    filter.connect(masterGain);
+
+    // Soothing chord: A2 root + E3 + A3 + C#4 (Amaj7-ish) + gentle 5th
+    const freqs = [110, 164.81, 220, 277.18, 329.63];
+    freqs.forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      g.gain.value = 0.18 / freqs.length;
+
+      // Slow LFO for movement
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      lfo.type = 'sine';
+      lfo.frequency.value = 0.05 + i * 0.03;
+      lfoGain.gain.value = f * 0.008;
+      lfo.connect(lfoGain);
+      lfoGain.connect(osc.frequency);
+
+      osc.connect(g);
+      g.connect(filter);
+      osc.start();
+      lfo.start();
+      oscillators.push(osc, lfo);
+    });
+  }
+
+  function play() {
+    if (!started) { build(); started = true; }
+    if (ctx.state === 'suspended') ctx.resume();
+    masterGain.gain.cancelScheduledValues(ctx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 1.5);
+    playing = true;
+    btn.classList.add('playing');
+    icon.className = 'fa-solid fa-music';
+  }
+  function stop() {
+    if (!started) return;
+    masterGain.gain.cancelScheduledValues(ctx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.8);
+    playing = false;
+    btn.classList.remove('playing');
+    icon.className = 'fa-solid fa-volume-xmark';
+  }
+
+  btn.addEventListener('click', () => playing ? stop() : play());
+
+  // Auto-stop when tab is hidden
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && playing) stop();
+  });
+})();
+
+/* =========================================================
+   18. PARALLAX (subtle) for hero portrait + blobs
+   ========================================================= */
+(() => {
+  if (isTouch || reduceMotion) return;
+  const portrait = $('#portraitWrap');
+  const blobs = $$('.bg-blob');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+  window.addEventListener('mousemove', (e) => {
+    mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    my = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+  function loop() {
+    fx += (mx - fx) * 0.06;
+    fy += (my - fy) * 0.06;
+    if (portrait) portrait.style.transform = `translate(${fx * 14}px, ${fy * 14}px)`;
+    blobs.forEach((b, i) => {
+      const k = (i + 1) * 8;
+      b.style.transform = `translate(${fx * k}px, ${fy * k}px)`;
+    });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* =========================================================
+   19. FOOTER YEAR
+   ========================================================= */
+$('#year').textContent = new Date().getFullYear();
+
+/* =========================================================
+   20. HIRE ME button — opens contact
+   ========================================================= */
+$('#hireMeBtn')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
