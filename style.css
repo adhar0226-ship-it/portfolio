@@ -1025,3 +1025,17 @@ input,textarea,select{font-family:inherit}
 /* hide mobile menu social on desktop */
 @media (min-width:961px){ .mobile-menu{ display:none}}
 
+/* Typewriter fix - mobile/tablet only (matches the existing 900px hero breakpoint) */
+@media (max-width: 900px){
+  .hero-typing{
+    flex-direction: column;   /* "I'm a" on top, role below: no more wrap/unwrap jumping */
+    align-items: center;
+    gap: 2px;
+  }
+  .hero-typing .dynamic{
+    display: block;
+    white-space: nowrap;      /* text can never wrap onto a second line */
+    max-width: 100%;
+    min-height: 1.3em;        /* keeps the height fixed when the text is empty */
+  }
+}
