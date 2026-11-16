@@ -1025,17 +1025,21 @@ input,textarea,select{font-family:inherit}
 /* hide mobile menu social on desktop */
 @media (min-width:961px){ .mobile-menu{ display:none}}
 
-/* Typewriter fix - mobile/tablet only (matches the existing 900px hero breakpoint) */
+/* Mobile/tablet fix - stops sideways widening + typewriter jumping */
 @media (max-width: 900px){
+  html{ overflow-x: hidden; }          /* fallback for older browsers */
+  .hero{ overflow-x: clip; }           /* cuts off rings/icons that stick out past the screen */
+
   .hero-typing{
-    flex-direction: column;   /* "I'm a" on top, role below: no more wrap/unwrap jumping */
+    flex-direction: column;
     align-items: center;
     gap: 2px;
+    min-height: 2.6em;                 /* reserves space so nothing below moves while typing */
   }
   .hero-typing .dynamic{
     display: block;
-    white-space: nowrap;      /* text can never wrap onto a second line */
+    white-space: nowrap;
     max-width: 100%;
-    min-height: 1.3em;        /* keeps the height fixed when the text is empty */
+    min-height: 1.3em;
   }
 }
