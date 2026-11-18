@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap for: https://adhar0226-ship-it.github.io/portfolio/
+  Upload to:   /portfolio/sitemap.xml (same folder as index.html)
+
+  Single-page site: every section (#home, #about, #skills, #timeline, #services,
+  #projects, #gallery, #certifications, #awards, #blog, #contact) lives on the
+  one URL below. Search engines ignore #fragments, so they are not listed as
+  separate entries (doing so would only create duplicates).
+
+  Images are listed in the order they appear in index.html.
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://adhar0226-ship-it.github.io/portfolio/</loc>
+    <lastmod>2026-11-18</lastmod>
+
+    <!-- Logo (favicon, navbar, footer) -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/logo/logo.png</image:loc></image:image>
+    <!-- Hero portrait -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/person/me.png</image:loc></image:image>
+    <!-- About -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/placeholder/ph1.jpg</image:loc></image:image>
+    <!-- Projects -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/project/portfolio.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/project/cadence.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/project/vault_chat.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/project/stypendless.jpeg</image:loc></image:image>
+    <!-- Gallery -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/ws_vibes.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/setup.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/c_night.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/code_coffee.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/bts.jpg</image:loc></image:image>
+    <!-- Certifications -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/nasa.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/anthropic.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/gpt.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/microsoft.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/ernst.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/maryland.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/be10x.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/tcsion.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/jiopc.jpg</image:loc></image:image>
+    <!-- Awards -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img2.avif</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img3.avif</image:loc></image:image>
+    <!-- Blog -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img1.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img2.avif</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img3.avif</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img4.avif</image:loc></image:image>
+  </url>
+
+    <url>
+    <loc>https://adhar0226-ship-it.github.io/portfolio/writing/wrt_1</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://adhar0226-ship-it.github.io/portfolio/writing/wrt_2</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://adhar0226-ship-it.github.io/portfolio/writing/wrt_3</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+  <url>
+    <loc>https://adhar0226-ship-it.github.io/portfolio/writing/wrt_4</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
+
+</urlset>
