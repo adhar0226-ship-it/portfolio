@@ -16,7 +16,7 @@
 
   <url>
     <loc>https://adhar0226-ship-it.github.io/portfolio/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
 
     <!-- Logo (favicon, navbar, footer) -->
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/logo/logo.png</image:loc></image:image>
@@ -45,6 +45,10 @@
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/be10x.jpg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/tcsion.png</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/jiopc.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/isro.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/helsinki.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/outskill.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/skillcourse.jpg</image:loc></image:image>
     <!-- Awards -->
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img1.jpg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img2.avif</image:loc></image:image>
@@ -52,8 +56,8 @@
     <!-- Blog -->
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img1.png</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img2.avif</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img3.avif</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img4.avif</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img3.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/blog/img4.jpg</image:loc></image:image>
   </url>
 
     <url>
