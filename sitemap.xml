@@ -16,7 +16,7 @@
 
   <url>
     <loc>https://adhar0226-ship-it.github.io/portfolio/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-23</lastmod>
 
     <!-- Logo (favicon, navbar, footer) -->
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/logo/logo.png</image:loc></image:image>
@@ -35,20 +35,17 @@
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/c_night.jpg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/code_coffee.jpg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/moment/bts.jpg</image:loc></image:image>
-    <!-- Certifications -->
+       <!-- Certifications -->
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/isro.png</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/nasa.svg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/anthropic.svg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/gpt.svg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/microsoft.svg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/ernst.svg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/maryland.jpg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/be10x.jpg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/tcsion.png</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/jiopc.jpg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/isro.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/cisco.png</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/anthropic.svg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/365ds.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/gpt.svg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/helsinki.png</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/outskill.jpg</image:loc></image:image>
-    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/skillcourse.jpg</image:loc></image:image>
+    <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/com_logo/nsdc.png</image:loc></image:image>
     <!-- Awards -->
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img1.jpg</image:loc></image:image>
     <image:image><image:loc>https://adhar0226-ship-it.github.io/portfolio/image/achievement/img2.avif</image:loc></image:image>
